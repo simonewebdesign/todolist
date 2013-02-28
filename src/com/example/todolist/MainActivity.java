@@ -21,7 +21,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 	private static final String TAG = "MainActivity";
 	private EditText myEditText;
-	private ArrayAdapter<String> aa;
+	private MyAdapter adapter;
 	private ArrayList<ToDoRow> todoRows;
 	private Context context = null;
 	private SharedPreferences storage = null;
@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
 		todoRows.add(new ToDoRow("fai questo", true));
 		todoRows.add(new ToDoRow("fai quest altro", false));
 		
-		MyAdapter adapter = new MyAdapter(this, R.id.myListView, todoRows);
+		adapter = new MyAdapter(this, R.id.myListView, todoRows);
 
 		// Bind the array adapter to the listview.
 		myListView.setAdapter(adapter);
@@ -53,28 +53,29 @@ public class MainActivity extends Activity {
 		
 		for (Map.Entry<String, ?> entry : storage.getAll().entrySet()) {
 			Log.v(TAG, entry.getKey() + ": " + entry.getValue());
-			aa.add((String)entry.getValue());
-			aa.notifyDataSetChanged();
+		//	adapter.add((String)entry.getValue());
+		//	adapter.notifyDataSetChanged();
 		}
 	}
 	
 	public void sendMessage(View view) { // onClick
 
-//		int index = 0;
-//		String message = myEditText.getText().toString();
-//		ItemView item = new ItemView(this);
-		
-//		if (Util.isNullOrEmpty(message)) {
-
-//			CharSequence text = "You cannot leave it blank.";
-//			int duration = Toast.LENGTH_LONG;
-//			Toast toast = Toast.makeText(context, text, duration);
-//			toast.show();
-//		} else {
-//			todoRows.add(index, item);
-//			aa.notifyDataSetChanged();
-///			myEditText.setText("");
-//		}
+		String message = myEditText.getText().toString();
+		ToDoRow row = new ToDoRow(message);
+	
+		if (Util.isNullOrEmpty(message)) { // show toast
+			CharSequence text = "You cannot leave it blank.";
+			int duration = Toast.LENGTH_LONG;
+			Toast toast = Toast.makeText(context, text, duration);
+			toast.show();
+		}
+		else { // add task
+			int index = 0;			
+			todoRows.add(index, row);
+			Log.v(TAG, "New task added: " + row.getTask());
+			adapter.notifyDataSetChanged();
+			myEditText.setText("");
+		}
 	}
 /*
 	private void saveData() {
@@ -116,7 +117,4 @@ public class MainActivity extends Activity {
 //	    saveData();
 	    Log.v(TAG, "onStop called!");
 	}
-	
-	
-	
 }

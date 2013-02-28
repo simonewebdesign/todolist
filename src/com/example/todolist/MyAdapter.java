@@ -44,12 +44,23 @@ public class MyAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		// TODO check that convertView is not null and of the appropriate type
-		final LayoutInflater inflater = ((Activity) activity).getLayoutInflater();
-		final View itemView = inflater.inflate(R.layout.item_view, null);
-		final TextView text = (TextView) itemView.findViewById(R.id.task);
-		final CheckBox check = (CheckBox) itemView.findViewById(R.id.checked);
-		return itemView;
+
+		if (rows != null && activity != null)
+		{
+			final LayoutInflater inflater = ((Activity) activity).getLayoutInflater();
+			final View itemView = inflater.inflate(R.layout.item_view, null);
+			
+			final TextView text = (TextView) itemView.findViewById(R.id.task);
+			final CheckBox check = (CheckBox) itemView.findViewById(R.id.checked);
+			
+			ToDoRow currentRow = rows.get(position);
+			
+			text.setText(currentRow.getTask());
+			check.setChecked(currentRow.isChecked());
+			
+			return itemView;
+		}
+		return null;
 	}
 
 }

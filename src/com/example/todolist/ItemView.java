@@ -7,8 +7,8 @@ import android.widget.RelativeLayout;
 public class ItemView extends RelativeLayout {
 
 	private static final String TAG = "ItemView";
-	
+
 	public ItemView(Context context, AttributeSet attributeSet) {
-        super(context, attributeSet);
+		super(context, attributeSet);
 	}
 }
