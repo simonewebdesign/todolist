@@ -13,41 +13,42 @@ import android.widget.TextView;
 
 public class MyAdapter extends BaseAdapter {
 
-	private Activity activity;
-	private Context context;
+//	private Activity activity;
+	private Context activity;
 	private int layoutId;
 	private ArrayList<ToDoRow> rows;
 	
 	
 	public MyAdapter(Context ctx, int layoutResourceId, ArrayList<ToDoRow> theRows) {
 		super();
-		context = ctx;
+		activity = ctx;
 		layoutId = layoutResourceId;
 		rows = theRows;
 	}
 	
 	@Override
 	public int getCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.rows.size();
 	}
 
 	@Override
 	public Object getItem(int arg0) {
-		// TODO Auto-generated method stub
+		if(this.rows != null) {
+			return this.rows.get(arg0);
+		}
+		
 		return null;
 	}
 
 	@Override
 	public long getItemId(int arg0) {
-		// TODO Auto-generated method stub
-		return 0;
+		return arg0;
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO check that convertView is not null and of the appropriate type
-		final LayoutInflater inflater = activity.getLayoutInflater();
+		final LayoutInflater inflater = ((Activity) activity).getLayoutInflater();
 		final View itemView = inflater.inflate(R.layout.item_view, null);
 		final TextView text = (TextView) itemView.findViewById(R.id.task);
 		final CheckBox check = (CheckBox) itemView.findViewById(R.id.checked);

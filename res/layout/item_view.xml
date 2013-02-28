@@ -5,11 +5,14 @@
 
     <TextView
         android:id="@+id/task"
-        android:layout_width="0dp"
+        android:layout_width="0dip"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="prova pippo" />
 
-    <CheckBox android:id="@+id/checked" />
+    <CheckBox
+        android:id="@+id/checked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
