@@ -12,12 +12,10 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 public class MyAdapter extends BaseAdapter {
-
-//	private Activity activity;
+	
 	private Context activity;
 	private int layoutId;
 	private ArrayList<ToDoRow> rows;
-	
 	
 	public MyAdapter(Context ctx, int layoutResourceId, ArrayList<ToDoRow> theRows) {
 		super();
@@ -32,17 +30,16 @@ public class MyAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public Object getItem(int arg0) {
-		if(this.rows != null) {
-			return this.rows.get(arg0);
+	public Object getItem(int position) {
+		if (this.rows != null) {
+			return this.rows.get(position);
 		}
-		
 		return null;
 	}
 
 	@Override
-	public long getItemId(int arg0) {
-		return arg0;
+	public long getItemId(int position) {
+		return position;
 	}
 
 	@Override
