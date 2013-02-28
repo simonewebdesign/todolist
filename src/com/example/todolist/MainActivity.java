@@ -58,12 +58,12 @@ public class MainActivity extends Activity {
 		}
 	}
 	
-	public void sendMessage(View view) { // onClick
+	public void addTask(View view) { // onClick
 
-		String message = myEditText.getText().toString();
-		ToDoRow row = new ToDoRow(message);
+		String task = myEditText.getText().toString();
+		ToDoRow row = new ToDoRow(task);
 	
-		if (Util.isNullOrEmpty(message)) { // show toast
+		if (Util.isNullOrEmpty(task)) { // show toast
 			CharSequence text = "You cannot leave it blank.";
 			int duration = Toast.LENGTH_LONG;
 			Toast toast = Toast.makeText(context, text, duration);
