@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MyAdapter extends BaseAdapter {
@@ -47,16 +48,19 @@ public class MyAdapter extends BaseAdapter {
 
 		if (rows != null && activity != null)
 		{
-			final LayoutInflater inflater = ((Activity) activity).getLayoutInflater();
-			final View itemView = inflater.inflate(R.layout.item_view, null);
+			View itemView;
 			
-			final TextView text = (TextView) itemView.findViewById(R.id.task);
-			final CheckBox check = (CheckBox) itemView.findViewById(R.id.checked);
+			if (convertView == null) {
+				
+				itemView = new ItemView(this.activity, null);
+			}
+			else {
+				itemView = (ItemView) convertView;
+			}
 			
 			ToDoRow currentRow = rows.get(position);
 			
-			text.setText(currentRow.getTask());
-			check.setChecked(currentRow.isChecked());
+			((ItemView)itemView).loadEntity(currentRow);
 			
 			return itemView;
 		}

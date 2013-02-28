@@ -13,7 +13,7 @@ public class ToDoRow {
 		checked = isChecked;
 	}
 
-	/* getters (public) */
+	/* getters */
 	public boolean isChecked() {
 		return checked;
 	}
@@ -21,11 +21,11 @@ public class ToDoRow {
 		return task;
 	}
 	
-	/* setters (private) */
-	private void setChecked(boolean checked) {
+	/* setters */
+	public void setChecked(boolean checked) {
 		this.checked = checked;
 	}
-	private void setTask(String task) {
+	public void setTask(String task) {
 		this.task = task;
 	}
 }

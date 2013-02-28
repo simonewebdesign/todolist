@@ -19,7 +19,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="sendMessage"
+            android:onClick="addTask"
             android:text="@string/button_text" />
     </LinearLayout>
 

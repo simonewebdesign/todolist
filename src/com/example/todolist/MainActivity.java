@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -48,13 +49,12 @@ public class MainActivity extends Activity {
 		// Bind the array adapter to the listview.
 		myListView.setAdapter(adapter);
 
-       // Restore preferences		
 		storage = getPreferences(MODE_PRIVATE);
 		
 		for (Map.Entry<String, ?> entry : storage.getAll().entrySet()) {
 			Log.v(TAG, entry.getKey() + ": " + entry.getValue());
-		//	adapter.add((String)entry.getValue());
-		//	adapter.notifyDataSetChanged();
+//			adapter.add(entry.getValue());
+//			adapter.notifyDataSetChanged();
 		}
 	}
 	
@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
 		String task = myEditText.getText().toString();
 		ToDoRow row = new ToDoRow(task);
 	
-		if (Util.isNullOrEmpty(task)) { // show toast
+		if (Util.isNullOrEmpty(task)) { // task is empty; show toast
 			CharSequence text = "You cannot leave it blank.";
 			int duration = Toast.LENGTH_LONG;
 			Toast toast = Toast.makeText(context, text, duration);
@@ -76,20 +76,22 @@ public class MainActivity extends Activity {
 			adapter.notifyDataSetChanged();
 			myEditText.setText("");
 		}
-	}
-/*
+	}	
+	
+/*	
 	private void saveData() {
+		
 		Editor editor = this.storage.edit();
-		int counter = 1;
-		for (String item : todoItems) {
-			editor.putString("item"+counter, item);
-			Log.v(TAG, "Item "+ counter + " " + item + " added to storage");
+		Integer counter = 1;
+		for (ToDoRow row : todoRows) {
+			editor.putStringSet(counter.toString(),  )(counter.toString(), row);
+			Log.v(TAG, "Item "+ counter + " " + row + " added to storage");
 			counter++;
 		}
 		editor.commit();
 		Log.v(TAG, "Data saved successfully");
 	}
-*/	
+*/
 
 	@Override
 	protected void onDestroy() {
