@@ -1,6 +1,11 @@
 Android TODO List
 =================
 
+Features
+--------
+
+- ListView of Custom Views (TextView + CheckBox)
+
 
 TODO
 ----
@@ -9,10 +14,9 @@ TODO
 - Modifica
 - Cancellazione
 - SQLite Storage
-- **ItemView** extends *RelativeLayout*: EditText (o TextView) + ComboBox
 
 
 BUGS
 ----
 
-No bugs found (*yet*).
+No bugs found... yet.
