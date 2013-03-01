@@ -6,19 +6,20 @@ public class ToDoRow {
 
 	public ToDoRow(String aTask) {
 		setTask(aTask);
+		setChecked(false);
 	}
 
-	public ToDoRow(String aTask, boolean isChecked) {
+	public ToDoRow(String aTask, boolean aCheck) {
 		setTask(aTask);
-		checked = isChecked;
+		setChecked(aCheck);
 	}
 
 	/* getters */
-	public boolean isChecked() {
-		return checked;
-	}
 	public String getTask() {
 		return task;
+	}
+	public boolean isChecked() {
+		return checked;
 	}
 	
 	/* setters */

@@ -17,9 +17,9 @@
             android:hint="@string/edittext_hint" />
 
         <Button
+            android:id="@+id/myButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="addTask"
             android:text="@string/button_text" />
     </LinearLayout>
 

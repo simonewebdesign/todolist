@@ -6,34 +6,35 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CheckedTextView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class ItemView extends RelativeLayout {
 
+	private static final String TAG = "ItemView";	
 	private ToDoRow rowEntity = null;
-	private static final String TAG = "ItemView";
 	
-	
-	public ItemView(Context context, AttributeSet attributeSet) {
-		super(context, attributeSet);
+	public ItemView(Context context, AttributeSet attr) {
+		
+		super(context, attr);
 		
 		String infService = Context.LAYOUT_INFLATER_SERVICE;
 		LayoutInflater inflater;
 		inflater = (LayoutInflater) getContext().getSystemService(infService);
 		inflater.inflate(R.layout.item_view, this, true);
 		
-		rowEntity = new ToDoRow("pippo");
 //		final LayoutInflater inflater = ((Activity) activity).getLayoutInflater();
 //		itemView = inflater.inflate(R.layout.item_view, null);
-		//itemView = View.inflate(activity, R.layout.item_view, null);		
+//		itemView = View.inflate(activity, R.layout.item_view, null);
+		
+		CheckBox c = (CheckBox) findViewById(R.id.checked);
+		c.setOnClickListener(checkBoxListener);
 	}
 	
 	
-	public void loadEntity(ToDoRow rowEntity) {
+	public void loadEntity(ToDoRow entity) {
 		
-		this.rowEntity = rowEntity;
+		rowEntity = entity;
 		
 		final TextView text = (TextView) findViewById(R.id.task);
 		final CheckBox check = (CheckBox) findViewById(R.id.checked);
@@ -43,19 +44,21 @@ public class ItemView extends RelativeLayout {
 	}
 	
 	
-	public void toggleTask(View view) { // onCheck
-		
-		CheckBox checkBox = (CheckBox) view;
-		this.rowEntity.setChecked(checkBox.isChecked());
-	}
-	
-	
-	private OnClickListener myListener = new OnClickListener() {
+	private OnClickListener checkBoxListener = new OnClickListener() {
 		
 	    public void onClick(View v) {
-	      toggleTask(v);
-	      Log.v(TAG, "OnClickListener called!");
+	    	
+	        // do something when the check is clicked
+		    Log.v(TAG, "CheckBox clicked!");
+		    toggleTask(v);
 	    }
 	};
 	
+	
+	public void toggleTask(View v) { 
+
+		CheckBox checkBox = (CheckBox) v;
+		rowEntity.setChecked(checkBox.isChecked());
+		Log.v(TAG, "CheckBox has been toggled");
+	}
 }
