@@ -2,10 +2,9 @@
 <resources>
 
     <string name="app_name">TODO List</string>
-    <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_list">ListActivity</string>
-    <string name="button_text">Vai</string>
-    <string name="edittext_hint">Prova</string>
+    <string name="button_text">Add</string>
+    <string name="edittext_hint">What\'s your task?</string>
 
 </resources>
