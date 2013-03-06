@@ -102,13 +102,6 @@ public class MainActivity extends Activity {
 	protected void onPause() {
 		super.onPause();
 		Log.v(TAG, "onPause called!");
-		
-		try {
-			writeJSON();
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
 	}
 
 	@Override
