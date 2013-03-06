@@ -66,8 +66,6 @@ public class MainActivity extends Activity {
 		// Bind the event handler to the button
 		Button b = (Button) findViewById(R.id.myButton);
 		b.setOnClickListener(buttonListener);
-		
-		readJsonData();
 	}
 
 	private OnClickListener buttonListener = new OnClickListener() {
@@ -119,38 +117,6 @@ public class MainActivity extends Activity {
 	
 		 Log.v(TAG, "Data has been persisted");
     }
-	
-	
-
-	protected void readJsonData() {
-		  StringBuffer strContent = new StringBuffer("");
-		  int ch;
-		try {
-
-			File file = new File(FILENAME);
-			if (file.exists()) {
-
-				FileInputStream fis = new FileInputStream(file);
-				
-				
-				 while( (ch = fis.read()) != -1)
-				        strContent.append((char)ch);
-				
-
-				try {
-
-					JsonUtil.readJSONArray(todoRows, strContent.toString());
-				} finally {
-					fis.close();
-				}
-
-				
-
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	@Override
 	protected void onDestroy() {
@@ -177,7 +143,6 @@ public class MainActivity extends Activity {
 	protected void onResume() {
 		super.onResume();
 		Log.v(TAG, "onResume called!");
-	    readJsonData();
 	}
 
 	@Override
