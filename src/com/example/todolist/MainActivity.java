@@ -179,4 +179,23 @@ public class MainActivity extends Activity {
 		Log.v(TAG, "onStop called!");
 		
 	}
+	
+	public void writeJSON() {
+		
+	  JSONObject json = new JSONObject();
+	  
+	  try {
+		  
+		for (ToDoRow row : todoRows) {
+	
+			json.put("task", row.getTask());
+			json.put("checked", row.isChecked());
+		}
+		
+		Log.v(TAG + " writeJSON()", json.toString());
+		
+	  } catch (JSONException e) {
+		  e.printStackTrace();
+	  }
+	}
 }
