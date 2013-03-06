@@ -45,14 +45,6 @@ public class MainActivity extends Activity {
 
 		// Create the array list of to do items
 		todoRows = new ArrayList<ToDoRow>();
-
-		// Restore data from internal storage
-		try {
-			restoreDataFromJSON(readJSON());
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
 		
 		// Create mock tasks
 //		todoRows.add(new ToDoRow("Feed the dog", true));
@@ -65,6 +57,15 @@ public class MainActivity extends Activity {
 		// Bind the array adapter to the ListView
 		myListView.setAdapter(adapter);
 
+		// Restore data from internal storage
+		try {
+			restoreDataFromJSON(readJSON());
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}		
+		adapter.notifyDataSetChanged();
+		
 		// Bind the event handler to the button
 		Button b = (Button) findViewById(R.id.myButton);
 		b.setOnClickListener(buttonListener);
@@ -123,7 +124,14 @@ public class MainActivity extends Activity {
 	protected void onStop() {
 		super.onStop();
 		Log.v(TAG, "onStop called!");
-		
+
+		// Save data
+		try {
+			writeJSON();
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}		
 	}
 	
 	public String getJSON() throws IOException {
@@ -196,13 +204,16 @@ public class MainActivity extends Activity {
 		todoRows.clear();
 		
 		try {
+			
 		  JSONArray data = new JSONArray(json);
 		
 	      for (int i = 0; i < data.length(); i++) {
 		 	  
 		        JSONObject o = data.getJSONObject(i);
+		        
 		        String task = o.getString("task");
 		        boolean checked = o.getBoolean("checked");
+		        
 		        ToDoRow row = new ToDoRow(task, checked);
 		        todoRows.add(row);
 		  }
