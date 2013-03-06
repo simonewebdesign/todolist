@@ -165,7 +165,12 @@ public class MainActivity extends Activity {
 		Log.v(TAG, "onPause called!");
 		persistJsonDataArray();
 		
-		writeJSON();
+		try {
+			writeJSON();
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -213,21 +218,37 @@ public class MainActivity extends Activity {
 			fos.close();
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 	}
 	
-	public String readJSON() throws FileNotFoundException {
+	public String readJSON() throws FileNotFoundException, IOException {
+		
+		// Constructs a new StringBuffer containing an empty String		
+		StringBuffer fileContent = new StringBuffer("");
 		
 		try {
 			
 			FileInputStream fis = openFileInput(FILENAME);
+			fis.read();
+			fis.close();
+
+			byte[] buffer = new byte[1024];
+			int length;
+			/* Reads a single byte from this stream and returns it as an integer 
+			* in the range from 0 to 255. Returns -1 if the end of the stream
+			* has been reached. Blocks until one byte has been read, the end of 
+			* the source stream is detected or an exception is thrown.
+            */
+			while ( (length = fis.read(buffer)) != -1 ) {
+			    fileContent.append(new String(buffer));
+			}			
 			
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+		} catch (IOException e) {
+			// could be IOException or FileNotFoundException
 			e.printStackTrace();
 		}
-		return "foo";
+		return fileContent.toString();
 	}
 }
