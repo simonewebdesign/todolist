@@ -164,6 +164,8 @@ public class MainActivity extends Activity {
 		super.onPause();
 		Log.v(TAG, "onPause called!");
 		persistJsonDataArray();
+		
+		writeJSON();
 	}
 
 	@Override
@@ -180,16 +182,18 @@ public class MainActivity extends Activity {
 		
 	}
 	
-	public void writeJSON() {
+	public String writeJSON() {
 		
-	  JSONObject json = new JSONObject();
+	  JSONArray json = new JSONArray();
 	  
 	  try {
 		  
 		for (ToDoRow row : todoRows) {
 	
-			json.put("task", row.getTask());
-			json.put("checked", row.isChecked());
+			JSONObject o = new JSONObject();
+			o.put("task", row.getTask());
+			o.put("checked", row.isChecked());
+			json.put(o);
 		}
 		
 		Log.v(TAG + " writeJSON()", json.toString());
@@ -197,5 +201,6 @@ public class MainActivity extends Activity {
 	  } catch (JSONException e) {
 		  e.printStackTrace();
 	  }
+	  return json.toString();
 	}
 }
