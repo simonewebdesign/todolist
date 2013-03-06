@@ -98,40 +98,28 @@ public class MainActivity extends Activity {
 	protected void onDestroy() {
 		super.onDestroy();
 		Log.v(TAG, "onDestroy called!");
-		
-		// Save data
-		try {
-			writeJSON();
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
+		saveData();
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
 		Log.v(TAG, "onPause called!");
+		saveData();		
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 		Log.v(TAG, "onResume called!");
+		saveData();		
 	}
 
 	@Override
 	protected void onStop() {
 		super.onStop();
 		Log.v(TAG, "onStop called!");
-
-		// Save data
-		try {
-			writeJSON();
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}		
+		saveData();
 	}
 	
 	public String getJSON() throws IOException {
@@ -182,13 +170,12 @@ public class MainActivity extends Activity {
 			fis.close();
 
 			byte[] buffer = new byte[1024];
-			int length;
 			/* Reads a single byte from this stream and returns it as an integer 
 			* in the range from 0 to 255. Returns -1 if the end of the stream
 			* has been reached. Blocks until one byte has been read, the end of 
 			* the source stream is detected or an exception is thrown.
             */
-			while ( (length = fis.read(buffer)) != -1 ) {
+			while ( (fis.read(buffer)) != -1 ) {
 			    fileContent.append(new String(buffer));
 			}			
 			
@@ -220,6 +207,17 @@ public class MainActivity extends Activity {
 			
 		} catch (JSONException e) {
 
+			e.printStackTrace();
+		}
+	}
+	
+	public void saveData() {
+
+		try {
+			writeJSON();
+		} catch (IOException e) {
+			
+			Log.e(TAG, "JSON writing failed.");
 			e.printStackTrace();
 		}
 	}
