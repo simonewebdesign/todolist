@@ -46,6 +46,14 @@ public class MainActivity extends Activity {
 		// Create the array list of to do items
 		todoRows = new ArrayList<ToDoRow>();
 
+		// Restore data from internal storage
+		try {
+			restoreDataFromJSON(getJSON());
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		
 		// Create mock tasks
 //		todoRows.add(new ToDoRow("Feed the dog", true));
 //		todoRows.add(new ToDoRow("Go to walk", false));
@@ -60,6 +68,8 @@ public class MainActivity extends Activity {
 		// Bind the event handler to the button
 		Button b = (Button) findViewById(R.id.myButton);
 		b.setOnClickListener(buttonListener);
+		
+		
 	}
 
 	private OnClickListener buttonListener = new OnClickListener() {
