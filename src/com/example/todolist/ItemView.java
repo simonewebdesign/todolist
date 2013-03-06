@@ -29,6 +29,8 @@ public class ItemView extends RelativeLayout {
 		
 		CheckBox c = (CheckBox) findViewById(R.id.checked);
 		c.setOnClickListener(checkBoxListener);
+		
+		this.setOnLongClickListener(longClickListener);
 	}
 	
 	
@@ -54,6 +56,15 @@ public class ItemView extends RelativeLayout {
 	    }
 	};
 	
+	private OnLongClickListener longClickListener = new OnLongClickListener() {
+		
+		public boolean onLongClick(View v) {
+			
+			// do something when the ItemView is longClicked
+			Log.v(TAG, "ItemView has been longClicked!");
+			return false;
+		}
+	};
 	
 	public void toggleTask(View v) { 
 
