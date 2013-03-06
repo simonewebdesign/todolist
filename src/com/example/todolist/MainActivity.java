@@ -166,8 +166,6 @@ public class MainActivity extends Activity {
 		try {
 			
 			FileInputStream fis = openFileInput(FILENAME);
-			fis.read();
-			fis.close();
 
 			byte[] buffer = new byte[1024];
 			/* Reads a single byte from this stream and returns it as an integer 
@@ -175,9 +173,10 @@ public class MainActivity extends Activity {
 			* has been reached. Blocks until one byte has been read, the end of 
 			* the source stream is detected or an exception is thrown.
             */
-			while ( (fis.read(buffer)) != -1 ) {
+			while ( fis.read(buffer) != -1 ) {
 			    fileContent.append(new String(buffer));
-			}			
+			}
+			fis.close();			
 			
 		} catch (IOException e) {
 			// could be IOException or FileNotFoundException
