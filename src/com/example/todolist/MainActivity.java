@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
 
 	private ListView myListView = null;
 	private EditText myEditText = null;
-	private final String FILENAME = "string.json";
+	private final String FILENAME = "list.json";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -182,7 +182,7 @@ public class MainActivity extends Activity {
 		
 	}
 	
-	public String getJSON() {
+	public String getJSON() throws IOException {
 		
 	  JSONArray json = new JSONArray();
 	  
@@ -204,7 +204,7 @@ public class MainActivity extends Activity {
 	  return json.toString();
 	}
 	
-	public void writeJSON() {
+	public void writeJSON() throws IOException {
 		
 		try {
 			
@@ -218,7 +218,16 @@ public class MainActivity extends Activity {
 		}
 	}
 	
-	public String readJSON() {
+	public String readJSON() throws FileNotFoundException {
 		
+		try {
+			
+			FileInputStream fis = openFileInput(FILENAME);
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "foo";
 	}
 }
