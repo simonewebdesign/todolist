@@ -48,7 +48,7 @@ public class MainActivity extends Activity {
 
 		// Restore data from internal storage
 		try {
-			restoreDataFromJSON(getJSON());
+			restoreDataFromJSON(readJSON());
 		} catch (IOException e) {
 
 			e.printStackTrace();
@@ -68,8 +68,6 @@ public class MainActivity extends Activity {
 		// Bind the event handler to the button
 		Button b = (Button) findViewById(R.id.myButton);
 		b.setOnClickListener(buttonListener);
-		
-		
 	}
 
 	private OnClickListener buttonListener = new OnClickListener() {
@@ -99,7 +97,14 @@ public class MainActivity extends Activity {
 	protected void onDestroy() {
 		super.onDestroy();
 		Log.v(TAG, "onDestroy called!");
+		
+		// Save data
+		try {
+			writeJSON();
+		} catch (IOException e) {
 
+			e.printStackTrace();
+		}
 	}
 
 	@Override
