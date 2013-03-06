@@ -91,33 +91,6 @@ public class MainActivity extends Activity {
 		}
 	};
 
-	
-	public void persistJsonDataArray() 
-	{
-	   
-		File file = new File(FILENAME);
-		
-	    
-			if (!file.exists()) {
-				try {
-					file.createNewFile();
-
-				} catch (IOException e) {
-					Log.e("MainActivity",e.getMessage());
-				}
-			}
-		
-		
-		try{  
-		
-		
-		JsonUtil.writeJSONArray(todoRows, new FileWriter(file)	);
-		 
-		} catch (IOException e){Log.e("MainActivity",e.getMessage());}
-	
-		 Log.v(TAG, "Data has been persisted");
-    }
-
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -129,7 +102,6 @@ public class MainActivity extends Activity {
 	protected void onPause() {
 		super.onPause();
 		Log.v(TAG, "onPause called!");
-		persistJsonDataArray();
 		
 		try {
 			writeJSON();
