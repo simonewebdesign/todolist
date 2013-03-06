@@ -188,4 +188,26 @@ public class MainActivity extends Activity {
 		}
 		return fileContent.toString();
 	}
+	
+	public void restoreDataFromJSON(String json) {
+		
+		todoRows.clear();
+		
+		try {
+		  JSONArray data = new JSONArray(json);
+		
+	      for (int i = 0; i < data.length(); i++) {
+		 	  
+		        JSONObject o = data.getJSONObject(i);
+		        String task = o.getString("task");
+		        boolean checked = o.getBoolean("checked");
+		        ToDoRow row = new ToDoRow(task, checked);
+		        todoRows.add(row);
+		  }
+			
+		} catch (JSONException e) {
+
+			e.printStackTrace();
+		}
+	}
 }
