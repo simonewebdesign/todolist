@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
 
 	private ListView myListView = null;
 	private EditText myEditText = null;
-	private final String FILENAME = "/sdcard/f.txt";
+	private final String FILENAME = "string.json";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -206,8 +206,6 @@ public class MainActivity extends Activity {
 	
 	public void writeJSON() {
 		
-		String FILENAME = "list.json";
-		
 		try {
 			
 			FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);					
@@ -218,6 +216,9 @@ public class MainActivity extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+	}
+	
+	public String readJSON() {
+		
 	}
 }
