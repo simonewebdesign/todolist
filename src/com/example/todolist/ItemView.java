@@ -52,7 +52,7 @@ public class ItemView extends RelativeLayout {
 	    	
 	        // do something when the check is clicked
 		    Log.v(TAG, "CheckBox clicked!");
-		    toggleTask(v);
+			rowEntity.setChecked(((CheckBox) v).isChecked());
 	    }
 	};
 	
@@ -65,11 +65,4 @@ public class ItemView extends RelativeLayout {
 			return false;
 		}
 	};
-	
-	public void toggleTask(View v) { 
-
-		CheckBox checkBox = (CheckBox) v;
-		rowEntity.setChecked(checkBox.isChecked());
-		Log.v(TAG, "CheckBox has been toggled");
-	}
 }
