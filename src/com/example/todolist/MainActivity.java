@@ -182,7 +182,7 @@ public class MainActivity extends Activity {
 		
 	}
 	
-	public String writeJSON() {
+	public String getJSON() {
 		
 	  JSONArray json = new JSONArray();
 	  
@@ -202,5 +202,22 @@ public class MainActivity extends Activity {
 		  e.printStackTrace();
 	  }
 	  return json.toString();
+	}
+	
+	public void writeJSON() {
+		
+		String FILENAME = "list.json";
+		
+		try {
+			
+			FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);					
+			fos.write( getJSON().getBytes() );
+			fos.close();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 }
