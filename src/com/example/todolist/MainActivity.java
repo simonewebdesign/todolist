@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import android.os.Bundle;
 import android.content.Context;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
@@ -20,7 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity implements ItemViewDialogFragment.ItemViewDialogListener {
 
 	private static final String TAG = "MainActivity";
 	private Context context = null;
@@ -223,5 +224,17 @@ public class MainActivity extends FragmentActivity {
 			Log.e(TAG, "JSON writing failed.");
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void onDialogEditClick(DialogFragment dialog) {
+		// TODO Auto-generated method stub
+		Log.v(TAG, "onDialogEditClick");
+	}
+
+	@Override
+	public void onDialogDeleteClick(DialogFragment dialog) {
+		// TODO Auto-generated method stub
+		Log.v(TAG, "onDialogDeleteClick");
 	}
 }
