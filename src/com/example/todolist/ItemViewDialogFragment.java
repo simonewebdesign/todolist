@@ -13,7 +13,24 @@ public class ItemViewDialogFragment extends DialogFragment {
 	private final String TAG = "ItemViewDialogFragment";
     // Use this instance of the interface to deliver action events
     private ItemViewDialogListener mListener;
+	private ItemView itemView;
+    
+	public ItemView getItemView() {
+		return itemView;
+	}
+
+	public void setItemView(ItemView itemView) {
+		this.itemView = itemView;
+	}
+
+	public ItemViewDialogFragment() {
+		super();
+	}
 	
+    public ItemViewDialogFragment(ItemView v) {
+    	super();
+    	itemView = v;
+    }
 	
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {

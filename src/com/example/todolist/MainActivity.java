@@ -236,5 +236,8 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 	public void onDialogDeleteClick(DialogFragment dialog) {
 		// TODO Auto-generated method stub
 		Log.v(TAG, "onDialogDeleteClick");
+		
+		ItemView view = ((ItemViewDialogFragment) dialog).getItemView();
+		
 	}
 }
