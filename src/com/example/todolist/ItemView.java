@@ -13,10 +13,13 @@ public class ItemView extends RelativeLayout {
 
 	private static final String TAG = "ItemView";	
 	private ToDoRow rowEntity = null;
+	private Context context = null;
 	
 	public ItemView(Context context, AttributeSet attr) {
 		
 		super(context, attr);
+		
+		this.context = context;
 		
 		String infService = Context.LAYOUT_INFLATER_SERVICE;
 		LayoutInflater inflater;
@@ -62,6 +65,9 @@ public class ItemView extends RelativeLayout {
 			
 			// do something when the ItemView is longClicked
 			Log.v(TAG, "ItemView has been longClicked!");
+	        ItemViewDialogFragment dialog = new ItemViewDialogFragment();
+	        dialog.show(((MainActivity) context).getSupportFragmentManager(), "dialog");
+			
 			return false;
 		}
 	};
