@@ -13,6 +13,11 @@ public class ItemView extends RelativeLayout {
 
 	private static final String TAG = "ItemView";	
 	private ToDoRow rowEntity = null;
+	
+	public ToDoRow getRowEntity() {
+		return rowEntity;
+	}
+
 	private Context context = null;
 	
 	public ItemView(Context context, AttributeSet attr) {

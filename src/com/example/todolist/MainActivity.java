@@ -238,6 +238,7 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 		Log.v(TAG, "onDialogDeleteClick");
 		
 		ItemView view = ((ItemViewDialogFragment) dialog).getItemView();
-		
+		todoRows.remove(view.getRowEntity());
+		adapter.notifyDataSetChanged();
 	}
 }
