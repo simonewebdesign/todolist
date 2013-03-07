@@ -1,7 +1,5 @@
 package com.example.todolist;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -15,12 +13,11 @@ public class ItemView extends RelativeLayout {
 
 	private static final String TAG = "ItemView";	
 	private ToDoRow rowEntity = null;
-	private ArrayList<ToDoRow> rows;
 	
-	public ItemView(Context context, AttributeSet attr, ArrayList<ToDoRow> _rows) {
+	public ItemView(Context context, AttributeSet attr) {
 		
 		super(context, attr);
-		rows = _rows;
+		
 		String infService = Context.LAYOUT_INFLATER_SERVICE;
 		LayoutInflater inflater;
 		inflater = (LayoutInflater) getContext().getSystemService(infService);
@@ -62,7 +59,6 @@ public class ItemView extends RelativeLayout {
 	private OnLongClickListener longClickListener = new OnLongClickListener() {
 		
 		public boolean onLongClick(View v) {
-			itemViewDialog itvd = new itemViewDialog();
 			
 			// do something when the ItemView is longClicked
 			Log.v(TAG, "ItemView has been longClicked!");
