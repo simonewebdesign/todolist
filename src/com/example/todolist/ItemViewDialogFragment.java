@@ -16,19 +16,7 @@ public class ItemViewDialogFragment extends DialogFragment {
 		
 		// Use the Builder class for convenient dialog construction
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-		builder.setMessage("cancellare?")
-				.setPositiveButton("si", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {
-						// FIRE ZE MISSILES!
-						Log.v(TAG, "IMMA FIRIN MAH LAZOR!");
-					}
-				})
-				.setNegativeButton("no", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {
-						// User cancelled the dialog
-					}
-				})
-	           .setItems(R.array.actions_array, new DialogInterface.OnClickListener() {
+		builder.setItems(R.array.actions_array, new DialogInterface.OnClickListener() {
 	               public void onClick(DialogInterface dialog, int which) {
 	               // The 'which' argument contains the index position
 	               // of the selected item
