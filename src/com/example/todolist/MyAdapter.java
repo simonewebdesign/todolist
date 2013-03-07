@@ -53,7 +53,7 @@ public class MyAdapter extends BaseAdapter {
 			
 			if (convertView == null) {
 				
-				itemView = new ItemView(this.context, null);
+				itemView = new ItemView(this.context, null, rows);
 			}
 			else {
 				itemView = (ItemView) convertView;
