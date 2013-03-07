@@ -6,5 +6,9 @@
     <string name="title_activity_list">ListActivity</string>
     <string name="button_text">Add</string>
     <string name="edittext_hint">What\'s your task?</string>
+    <string-array name="actions_array">
+        <item >Edit</item>
+        <item >Delete</item>
+    </string-array>
 
 </resources>
