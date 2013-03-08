@@ -2,27 +2,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context=".EditActivity"
-    android:background="#00000000" >
+    android:background="#00000000"
+    tools:context=".EditActivity" >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" >
+        android:layout_centerInParent="true"
+        android:padding="12dip" 
+        android:background="#000000">
 
-        <EditText
-            android:id="@+id/myEditText2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/edittext_hint" />
-
-        <Button
-            android:id="@+id/myButton2"
+        <TextView
+            android:id="@+id/text1"
+            android:layout_alignParentRight="true"
+             android:layout_alignParentTop="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button_text" />
-    </LinearLayout>
+            android:hint="@string/update_task"
+            android:padding="12dip" >
+        </TextView>
 
+        <EditText
+             android:layout_below="@id/text1"
+            android:id="@+id/myEditText2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/edittext_hint"
+            android:padding="12dip" />
+
+      
+        <LinearLayout
+          
+            android:layout_below="@id/myEditText2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" 
+            android:padding="12dip">
+
+            <Button
+                android:id="@+id/myButton2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="@string/update" />
+
+            <Button
+                android:id="@+id/myButton3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="@string/cancel" />
+        </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>
