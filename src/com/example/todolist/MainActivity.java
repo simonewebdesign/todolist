@@ -234,11 +234,11 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 
 	@Override
 	public void onDialogDeleteClick(DialogFragment dialog) {
-		// TODO Auto-generated method stub
+
 		Log.v(TAG, "onDialogDeleteClick");
 		
-		ItemView view = ((ItemViewDialogFragment) dialog).getItemView();
-		todoRows.remove(view.getRowEntity());
+		ToDoRow row = ((ItemViewDialogFragment) dialog).getEntity();
+		todoRows.remove(row);
 		adapter.notifyDataSetChanged();
 	}
 }
