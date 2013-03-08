@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
+import android.app.Dialog;
 import android.content.Context;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
@@ -29,7 +30,12 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 	private MyAdapter adapter = null;
 	private ListView myListView = null;
 	private EditText myEditText = null;
+	private Button myButton = null;
+	private Dialog myDialog = null;	
 	private final String FILENAME = "list.json";
+	private String action;
+	private ToDoRow rowToEdit;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +47,8 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 		// Get references to UI widgets
 		myListView = (ListView) findViewById(R.id.myListView);
 		myEditText = (EditText) findViewById(R.id.myEditText);
-
+		myButton =   (Button)   findViewById(R.id.myButton);
+		
 		// Create the array list of to do items
 		todoRows = new ArrayList<ToDoRow>();
 
@@ -57,8 +64,9 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 		myListView.setAdapter(adapter);
 
 		// Bind the event handler to the button
-		Button b = (Button) findViewById(R.id.myButton);
-		b.setOnClickListener(buttonListener);
+		myButton.setOnClickListener(buttonListener);
+		
+		action = "Insert";
 	}
 
 	private OnClickListener buttonListener = new OnClickListener() {
@@ -68,26 +76,49 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 			// do something when the button is clicked
 			Log.v(TAG, "Button clicked!");
 
-			// add a new task
-			String task = myEditText.getText().toString();
-
-			if (Util.isNullOrEmpty(task)) {
-
-				// task is empty, show toast
-				Util.showToast(context, "You cannot leave it blank.");
+			if (action.equals("Insert")) {
 				
-			} else {
-				int index = 0;
-				todoRows.add(index, new ToDoRow(task));
-				adapter.notifyDataSetChanged();
-				saveData();
-				myEditText.setText("");
+				addTask();
+				
+			} else
+			if (action.equals("Update")) {
+				
+				editTask(rowToEdit);
 			}
+			
 		}
 	};
 
+	public void addTask(){
+
+		String task = myEditText.getText().toString();
+
+		if (Util.isNullOrEmpty(task)) {
+
+			// task is empty, show toast
+			Util.showToast(context, "You cannot leave it blank.");
+			
+		} else {
+			int index = 0;
+			todoRows.add(index, new ToDoRow(task));
+			adapter.notifyDataSetChanged();
+			saveData();
+			myEditText.setText("");
+		}
+	}
+	
+	public void editTask(ToDoRow row) {
+		
+		  todoRows.remove(rowToEdit);
+		  addTask();
+		  myButton.setText("Add");
+		  action = "Insert";
+		  Util.showToast(context, "Task edited successfully!");
+	}
+	
 	@Override
 	protected void onDestroy() {
+		
 		super.onDestroy();
 		Log.v(TAG, "onDestroy called!");
 		saveData();
@@ -95,12 +126,14 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 
 	@Override
 	protected void onPause() {
+		
 		super.onPause();
 		Log.v(TAG, "onPause called!");
 	}
 
 	@Override
 	protected void onResume() {
+		
 		super.onResume();
 		Log.v(TAG, "onResume called!");
 		
@@ -116,6 +149,7 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 
 	@Override
 	protected void onStop() {
+		
 		super.onStop();
 		Log.v(TAG, "onStop called!");
 		saveData();
@@ -229,8 +263,14 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 
 	@Override
 	public void onDialogEditClick(DialogFragment dialog) { 
-		// TODO Auto-generated method stub
+
 		Log.v(TAG, "onDialogEditClick");
+		
+		ToDoRow row = ((ItemViewDialogFragment) dialog).getEntity();
+		myEditText.setText(row.getTask());
+		myButton.setText("Update");
+		action = "Update";
+		rowToEdit = row;
 	}
 
 	@Override
