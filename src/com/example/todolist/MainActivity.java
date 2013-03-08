@@ -240,5 +240,6 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 		ToDoRow row = ((ItemViewDialogFragment) dialog).getEntity();
 		todoRows.remove(row);
 		adapter.notifyDataSetChanged();
+		Util.showToast(context, "Task deleted successfully");
 	}
 }
