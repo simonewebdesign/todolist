@@ -7,7 +7,9 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -25,6 +27,14 @@
         <activity
             android:name="com.example.todolist.ListActivity"
             android:label="@string/title_activity_list" >
+        </activity>
+        <activity
+            android:name="com.example.todolist.EditActivity"
+            android:label="@string/title_activity_edit"
+            android:parentActivityName="com.example.todolist.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.todolist.MainActivity" />
         </activity>
     </application>
 
