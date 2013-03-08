@@ -87,14 +87,15 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 		}
 	};
 
-	public void addTask(){
+	public boolean addTask(){
 
-		String task = myEditText.getText().toString();
-
+		String task = myEditText.getText().toString().trim();
+		
 		if (Util.isNullOrEmpty(task)) {
 
 			// task is empty, show toast
 			Util.showToast(context, "You cannot leave it blank.");
+			return false;
 			
 		} else {
 			int index = 0;
@@ -102,16 +103,20 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 			adapter.notifyDataSetChanged();
 			saveData();
 			myEditText.setText("");
+			return true;
 		}
 	}
 	
 	public void editTask(ToDoRow row) {
-		
-		  todoRows.remove(rowToEdit);
-		  addTask();
-		  myButton.setText("Add");
-		  action = "Insert";
-		  Util.showToast(context, "Task edited successfully!");
+		  
+		  boolean added = addTask();
+		  
+		  if (added) {
+			  todoRows.remove(rowToEdit);			  
+			  myButton.setText("Add");
+			  action = "Insert";
+			  Util.showToast(context, "Task edited successfully!");			  
+		  }
 	}
 	
 	@Override
