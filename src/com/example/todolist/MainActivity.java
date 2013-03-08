@@ -11,7 +11,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
-import android.app.Dialog;
 import android.content.Context;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
@@ -31,7 +30,6 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 	private ListView myListView = null;
 	private EditText myEditText = null;
 	private Button myButton = null;
-	private Dialog myDialog = null;	
 	private final String FILENAME = "list.json";
 	private String action;
 	private ToDoRow rowToEdit;
