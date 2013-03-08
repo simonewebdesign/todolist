@@ -56,15 +56,6 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 		// Bind the array adapter to the ListView
 		myListView.setAdapter(adapter);
 
-		// Restore data from internal storage
-		try {
-			restoreDataFromJSON(readJSON());
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
-		adapter.notifyDataSetChanged();
-
 		// Bind the event handler to the button
 		Button b = (Button) findViewById(R.id.myButton);
 		b.setOnClickListener(buttonListener);
@@ -111,6 +102,15 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 	protected void onResume() {
 		super.onResume();
 		Log.v(TAG, "onResume called!");
+		
+		// Restore data from internal storage
+		try {
+			restoreDataFromJSON(readJSON());
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		adapter.notifyDataSetChanged();		
 	}
 
 	@Override
@@ -227,7 +227,7 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 	}
 
 	@Override
-	public void onDialogEditClick(DialogFragment dialog) {
+	public void onDialogEditClick(DialogFragment dialog) { 
 		// TODO Auto-generated method stub
 		Log.v(TAG, "onDialogEditClick");
 	}
