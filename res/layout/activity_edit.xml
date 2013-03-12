@@ -9,35 +9,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:padding="12dip" 
-        android:background="#000000">
+        android:background="#FFFFFF"
+        android:padding="12dip" >
 
         <TextView
             android:id="@+id/text1"
-            android:layout_alignParentRight="true"
-             android:layout_alignParentTop="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
             android:hint="@string/update_task"
             android:padding="12dip" >
         </TextView>
 
         <EditText
-             android:layout_below="@id/text1"
             android:id="@+id/myEditText2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/edittext_hint"
+            android:layout_below="@id/text1"
             android:padding="12dip" />
 
-      
         <LinearLayout
-          
-            android:layout_below="@id/myEditText2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true" 
-            android:padding="12dip">
+            android:layout_below="@id/myEditText2"
+            android:layout_centerHorizontal="true"
+            android:padding="12dip" >
 
             <Button
                 android:id="@+id/myButton2"

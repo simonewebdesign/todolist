@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import android.os.Bundle;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -71,15 +72,11 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 			// do something when the button is clicked
 			Log.v(TAG, "Button clicked!");
 
-			if (action.equals("Insert")) {
+			
 				
 				addTask();
 				
-			} else
-			if (action.equals("Update")) {
-				
-				editTask(rowToEdit);
-			}
+			
 			
 		}
 	};
@@ -106,14 +103,13 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 	
 	public void editTask(ToDoRow row) {
 		  
-		  boolean added = addTask();
+		
+		  Intent intent = new Intent(MainActivity.this, EditActivity.class);
+		  Bundle b = new Bundle();
+          b.putParcelableArrayList("todorows",todoRows);
+          intent.putExtras(b);
+		  startActivity(intent);
 		  
-		  if (added) {
-			  todoRows.remove(rowToEdit);			  
-			  myButton.setText("Add");
-			  action = "Insert";
-			  Util.showToast(context, "Task edited successfully!");			  
-		  }
 	}
 	
 	@Override
@@ -176,10 +172,8 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 		Log.v(TAG, "onDialogEditClick");
 		
 		ToDoRow row = ((ItemViewDialogFragment) dialog).getEntity();
-		myEditText.setText(row.getTask());
-		myButton.setText("Update");
-		action = "Update";
-		rowToEdit = row;
+		
+		editTask(row);
 	}
 
 	@Override
