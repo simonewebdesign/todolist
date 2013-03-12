@@ -37,14 +37,14 @@
             android:padding="12dip" >
 
             <Button
-                android:id="@+id/myButton2"
+                android:id="@+id/updateButton"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:text="@string/update" />
 
             <Button
-                android:id="@+id/myButton3"
+                android:id="@+id/cancelButton"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"

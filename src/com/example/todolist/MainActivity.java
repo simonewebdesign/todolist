@@ -23,14 +23,18 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 
 	private static final String TAG = "MainActivity";
 	private Context context = null;
-	private ArrayList<ToDoRow> todoRows = null;
+	private static ArrayList<ToDoRow> todoRows = null;
+	public static ArrayList<ToDoRow> getTodoRows() {
+		return todoRows;
+	}
+
 	private MyAdapter adapter = null;
 	private ListView myListView = null;
 	private EditText myEditText = null;
 	private Button myButton = null;
-	private final String FILENAME = "list.json";
-	private String action;
-	private ToDoRow rowToEdit;
+	public static final String FILENAME = "list.json";
+	
+	private static ToDoRow rowToEdit;
 
 
 	@Override
@@ -101,13 +105,14 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 		}
 	}
 	
+	public static ToDoRow getRowToEdit(){return rowToEdit;}
+	
+	
 	public void editTask(ToDoRow row) {
 		  
 		
 		  Intent intent = new Intent(MainActivity.this, EditActivity.class);
-		  Bundle b = new Bundle();
-          b.putParcelableArrayList("todorows",todoRows);
-          intent.putExtras(b);
+		  this.rowToEdit = row;       
 		  startActivity(intent);
 		  
 	}
@@ -174,6 +179,8 @@ public class MainActivity extends FragmentActivity implements ItemViewDialogFrag
 		ToDoRow row = ((ItemViewDialogFragment) dialog).getEntity();
 		
 		editTask(row);
+		
+		
 	}
 
 	@Override

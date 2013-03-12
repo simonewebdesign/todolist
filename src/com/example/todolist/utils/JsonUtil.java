@@ -53,7 +53,7 @@ public class JsonUtil {
 
 		} catch (IOException e) {
 
-			e.printStackTrace();
+			Log.e(TAG + " writeJSON()", e.getMessage());
 		}
 	}
 
