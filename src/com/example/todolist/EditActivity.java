@@ -19,79 +19,53 @@ import android.support.v4.app.NavUtils;
 public class EditActivity extends Activity {
 	private Button cancelButton = null;
 	private Button updateButton = null;
-	private final String TAG ="EditActivity";
+	private final String TAG = "EditActivity";
 	private ArrayList<ToDoRow> todoRows = null;
 	private ToDoRow todoRow;
 	private EditText myEditText = null;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit);
-		cancelButton =   (Button)   findViewById(R.id.cancelButton);
+		cancelButton = (Button) findViewById(R.id.cancelButton);
 		cancelButton.setOnClickListener(cancelListener);
-		updateButton =   (Button)   findViewById(R.id.updateButton);
+		updateButton = (Button) findViewById(R.id.updateButton);
 		updateButton.setOnClickListener(updateListener);
 		myEditText = (EditText) findViewById(R.id.myEditText2);
 		// Show the Up button in the action bar.
-		//getActionBar().setDisplayHomeAsUpEnabled(true);
-		this.todoRow= MainActivity.getRowToEdit();
+		// getActionBar().setDisplayHomeAsUpEnabled(true);
+		this.todoRow = MainActivity.getRowToEdit();
 		myEditText.setText(todoRow.getTask());
-		todoRows=new ArrayList<ToDoRow>();
-		todoRows=MainActivity.getTodoRows();
-		
+		todoRows = new ArrayList<ToDoRow>();
+		todoRows = MainActivity.getTodoRows();
+
 	}
-	
-	
-	
 
 	
-
-
-
-
-	private void getTodoRowsFromFile() {
-		// Restore data from internal storage
-				try {
-					JsonUtil.restoreDataFromJSON(JsonUtil.readJSON(MainActivity.FILENAME,this),todoRows);
-				} catch (IOException e) {
-
-					e.printStackTrace();
-				}
-	}
 
 	private OnClickListener cancelListener = new OnClickListener() {
 
 		public void onClick(View v) {
 
-			
 			Log.v(TAG, "Cancel clicked!");
 
-			
-				
-				EditActivity.this.finish();
-				
-			
-			
+			EditActivity.this.finish();
+
 		}
 	};
 	private OnClickListener updateListener = new OnClickListener() {
 
 		public void onClick(View v) {
 
-			
 			Log.v(TAG, "Update clicked!");
-            todoRow.setTask(myEditText.getText().toString());
-            saveData();
-            EditActivity.this.finish();
-				
-				
-				
-			
-			
+			todoRow.setTask(myEditText.getText().toString());
+			saveData();
+			EditActivity.this.finish();
+
 		}
 	};
-	
-	
+
 	public void saveData() {
 
 		try {
@@ -102,6 +76,7 @@ public class EditActivity extends Activity {
 			e.printStackTrace();
 		}
 	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

@@ -17,9 +17,10 @@ import com.example.todolist.ToDoRow;
 
 public class JsonUtil {
 
-	private static final String TAG = "JsonUtil";	
-	
-	public static String getJSON(ArrayList<ToDoRow> todoRows ) throws IOException {
+	private static final String TAG = "JsonUtil";
+
+	public static String getJSON(ArrayList<ToDoRow> todoRows)
+			throws IOException {
 
 		JSONArray json = new JSONArray();
 
@@ -41,8 +42,8 @@ public class JsonUtil {
 		return json.toString();
 	}
 
-	
-	public static void writeJSON(ArrayList<ToDoRow> todoRows, String fileName, Context ctx) throws IOException {
+	public static void writeJSON(ArrayList<ToDoRow> todoRows, String fileName,
+			Context ctx) throws IOException {
 
 		try {
 
@@ -57,8 +58,8 @@ public class JsonUtil {
 		}
 	}
 
-	
-	public static String readJSON(String fileName, Context ctx) throws FileNotFoundException, IOException {
+	public static String readJSON(String fileName, Context ctx)
+			throws FileNotFoundException, IOException {
 
 		// Constructs a new StringBuffer containing an empty String
 		StringBuffer fileContent = new StringBuffer("");
@@ -86,8 +87,8 @@ public class JsonUtil {
 		return fileContent.toString();
 	}
 
-	
-	public static void restoreDataFromJSON(String json, ArrayList<ToDoRow> todoRows) {
+	public static void restoreDataFromJSON(String json,
+			ArrayList<ToDoRow> todoRows) {
 
 		todoRows.clear();
 
