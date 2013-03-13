@@ -31,7 +31,8 @@
         <activity
             android:name="com.example.todolist.EditActivity"
             android:label="@string/title_activity_edit"
-            android:parentActivityName="com.example.todolist.MainActivity" >
+            android:parentActivityName="com.example.todolist.MainActivity"
+            android:theme="@style/Theme.Transparent" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.todolist.MainActivity" />
