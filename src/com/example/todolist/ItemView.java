@@ -70,7 +70,7 @@ public class ItemView extends RelativeLayout {
 			
 			// do something when the ItemView is longClicked
 			Log.v(TAG, "ItemView has been longClicked!");
-	        ItemViewDialogFragment dialog = new ItemViewDialogFragment((ItemView) v);
+	        ItemViewDialogFragment dialog = new ItemViewDialogFragment(rowEntity);
 	        dialog.show(((MainActivity) context).getSupportFragmentManager(), "dialog");
 			
 			return false;

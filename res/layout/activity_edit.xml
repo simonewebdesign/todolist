@@ -1,0 +1,55 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#000000FF"
+    tools:context=".EditActivity" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="#FFFFFF"
+        android:padding="12dip" >
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:hint="@string/update_task"
+            android:padding="12dip" >
+        </TextView>
+
+        <EditText
+            android:id="@+id/myEditText2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text1"
+            android:padding="12dip" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/myEditText2"
+            android:layout_centerHorizontal="true"
+            android:padding="12dip" >
+
+            <Button
+                android:id="@+id/updateButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="@string/update" />
+
+            <Button
+                android:id="@+id/cancelButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="@string/cancel" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
