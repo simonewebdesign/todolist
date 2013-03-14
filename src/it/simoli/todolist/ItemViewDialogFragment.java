@@ -1,4 +1,4 @@
-package com.example.todolist;
+package it.simoli.todolist;
 
 import android.app.Activity;
 import android.app.AlertDialog;

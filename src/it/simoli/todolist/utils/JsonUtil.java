@@ -1,4 +1,6 @@
-package com.example.todolist.utils;
+package it.simoli.todolist.utils;
+
+import it.simoli.todolist.ToDoRow;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,7 +15,6 @@ import org.json.JSONObject;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.todolist.ToDoRow;
 
 public class JsonUtil {
 

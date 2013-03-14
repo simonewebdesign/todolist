@@ -1,4 +1,4 @@
-package com.example.todolist;
+package it.simoli.todolist;
 
 import java.util.ArrayList;
 

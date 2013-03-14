@@ -1,9 +1,9 @@
-package com.example.todolist;
+package it.simoli.todolist;
+
+import it.simoli.todolist.utils.JsonUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
-import com.example.todolist.utils.JsonUtil;
 
 import android.os.Bundle;
 import android.app.Activity;

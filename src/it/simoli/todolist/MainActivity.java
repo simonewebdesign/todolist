@@ -1,4 +1,6 @@
-package com.example.todolist;
+package it.simoli.todolist;
+
+import it.simoli.todolist.utils.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,7 +16,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import com.example.todolist.utils.*;
 
 public class MainActivity extends FragmentActivity implements
 		ItemViewDialogFragment.ItemViewDialogListener {
