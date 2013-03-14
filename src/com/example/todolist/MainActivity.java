@@ -26,7 +26,7 @@ public class MainActivity extends FragmentActivity implements
 	public static ArrayList<ToDoRow> getTodoRows() {
 		return todoRows;
 	}
-
+ 
 	private MyAdapter adapter = null;
 	private ListView myListView = null;
 	private EditText myEditText = null;
