@@ -129,14 +129,7 @@ public class MainActivity extends FragmentActivity implements
 		Log.v(TAG, "onResume called!");
 
 		// Restore data from internal storage
-		try {
-			JsonUtil.restoreDataFromJSON(JsonUtil.readJSON(FILENAME, context),
-					todoRows);
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
-		adapter.notifyDataSetChanged();
+		resumeData();
 	}
 
 	@Override
@@ -158,6 +151,18 @@ public class MainActivity extends FragmentActivity implements
 		}
 	}
 
+	public void resumeData() {
+		
+		try {
+			JsonUtil.restoreDataFromJSON(JsonUtil.readJSON(FILENAME, context),
+					todoRows);
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		adapter.notifyDataSetChanged();
+	}
+	
 	@Override
 	public void onDialogEditClick(DialogFragment dialog) {
 
