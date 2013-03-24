@@ -1,12 +1,19 @@
-Android Todo List
-=================
+Todo List
+=========
+
+![Android app on Google Play]](https://developer.android.com/images/brand/en_app_rgb_wo_60.png)
 
 Introduction
 ------------
 
-This Todo List is awesome and ... [TODO complete this outstanding introduction!]
+Todo List is a FREE and open source task manager.
 
-[[TODO add Google Play badge here]](https://developer.android.com/distribute/googleplay/publish/preparing.html#badges)
+This app requires no special permissions to run. We respect your privacy!
+
+Todo List is very simple and intuitive, with its minimal and clean style. 
+In fact, it has a very fast and lightweight interface, because we care about your battery life.
+
+Enjoy!
 
 
 Features
