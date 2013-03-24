@@ -1,14 +1,14 @@
 Todo List
 =========
 
-![Android app on Google Play](https://developer.android.com/images/brand/en_app_rgb_wo_60.png)
+[![Android app on Google Play](https://developer.android.com/images/brand/en_app_rgb_wo_60.png "Get it on Google Play")](https://play.google.com/store/apps/details?id=it.simoli.todolist)
 
 Introduction
 ------------
 
 Todo List is a FREE and open source task manager.
 
-This app requires no special permissions to run. We respect your privacy!
+This app requires no special permissions to run. We respect your privacy.
 
 Todo List is very simple and intuitive, with its minimal and clean style. 
 In fact, it has a very fast and lightweight interface, because we care about your battery life.
@@ -53,4 +53,4 @@ Contributors
 
 ---
 
-Want to collaborate? Send us a [pull request](https://help.github.com/articles/creating-a-pull-request) and you'll automatically become a contributor! :)
+Want to collaborate? Send us a [pull request](https://help.github.com/articles/creating-a-pull-request) and you'll automatically become a contributor.
