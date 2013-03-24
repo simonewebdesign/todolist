@@ -1,7 +1,7 @@
 Todo List
 =========
 
-![Android app on Google Play]](https://developer.android.com/images/brand/en_app_rgb_wo_60.png)
+![Android app on Google Play](https://developer.android.com/images/brand/en_app_rgb_wo_60.png)
 
 Introduction
 ------------
